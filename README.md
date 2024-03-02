@@ -1,105 +1,68 @@
-# Projeto Biblioteca com Flask e SQLite
+## Gerenciamento de Biblioteca com Flask
 
-Este é um projeto simples de uma API de biblioteca que permite realizar operações CRUD (Criar, Ler, Atualizar, Deletar) em um banco de dados de livros utilizando Flask e SQLite.
+Este projeto é uma aplicação Flask que fornece uma API RESTful para o gerenciamento de uma coleção de livros em uma biblioteca. Utilizando Flask e SQLAlchemy com SQLite como banco de dados, permite aos usuários adicionar, listar, atualizar e deletar livros através de endpoints HTTP.
 
-## Configuração do Ambiente
+### Funcionalidades
 
-Antes de iniciar, certifique-se de que você tem Python instalado em sua máquina. Este projeto foi desenvolvido utilizando Python 3.8.5, mas deve ser compatível com outras versões que suportam Flask.
+* CRUD de Livros: Crie, leia, atualize e delete livros usando a API REST.
+* Armazenamento com SQLite: Facilita o armazenamento e recuperação de dados de livros.
+* Feedback ao Usuário: Fornece respostas claras e informativas para as ações do usuário.
 
-### Clonar o Repositório
+### Tecnologias Utilizadas
 
-Primeiro, clone o repositório para a sua máquina local:
+* Flask
+* Flask-SQLAlchemy
+* SQLite
+
+### Como Configurar
+
+#### Pré-Requisitos
+
+* Python 3.6 ou superior
+* pip
+
+#### Instalação
+
+1. Clone o repositório para sua máquina local:
 
 ```bash
-git clone https://seu-repositorio-aqui/projeto-biblioteca.git
-cd projeto-biblioteca
+git clone <URL do repositório>
 ```
 
-Instalar Dependências
-Crie um ambiente virtual e instale as dependências utilizando pip:
+2. Navegue até o diretório do projeto:
 
 ```bash
-python -m venv venv
-venv\Scripts\activate  # No Windows
-source venv/bin/activate  # No Linux ou macOS
-pip install Flask Flask-SQLAlchemy
+cd <nome do diretório do projeto>
 ```
 
-Inicializar a Aplicação
-Para iniciar a aplicação, execute:
+3. Instale as dependências necessárias:
 
-```bash
+```
+pip install flask flask_sqlalchemy
+```
+
+### Como Executar
+
+1. Inicie o servidor Flask executando:
+
+```
 python app.py
 ```
-A aplicação estará rodando no endereço http://127.0.0.1:5000/.
 
-## Estrutura do Banco de Dados
+2. A aplicação agora estará rodando em http://localhost:5000/. Você pode acessar os endpoints definidos utilizando um cliente HTTP como Postman ou via curl.
 
-O banco de dados consiste em uma única tabela chamada `Livro`, com as seguintes colunas:
+### Endpoints da API
 
-- `id`: ID único do livro (chave primária).
-- `titulo`: Título do livro.
-- `autor`: Autor do livro.
+* **POST /livro:** Adiciona um novo livro. Exemplo de corpo da requisição: {"titulo": "Novo Livro", "autor": "Autor"}.
+* **GET /livros:** Retorna uma lista de todos os livros.
+* **GET /livro/<id>:** Retorna detalhes de um livro específico.
+* **PUT /livro/<id>:** Atualiza um livro existente. Exemplo de corpo da requisição: {"titulo": "Livro Atualizado", "autor": "Autor Atualizado"}.
+* **DELETE /livro/<id>:** Deleta um livro específico.
 
-## Testando a API com Postman
+### Contribuindo
 
-A seguir, exemplos de como testar as operações CRUD utilizando o Postman.
+Contribuições são muito bem-vindas! Por favor, leia o CONTRIBUTING.md para mais detalhes sobre nosso código de conduta, e o processo para enviar pedidos de pull.
 
-### Adicionar um Novo Livro
+### Licença
 
-- **URL**: `http://127.0.0.1:5000/livro`
-- **Método**: `POST`
-- **Body** (raw, JSON):
-  ```json
-  {
-    "titulo": "Nome do Livro",
-    "autor": "Autor do Livro"
-  }
-
-
-## Operações da API
-
-### Listar Todos os Livros
-
-- **URL**: `http://127.0.0.1:5000/livros`
-- **Método**: `GET`
-
-Esta operação lista todos os livros disponíveis no banco de dados.
-
-### Obter Detalhes de um Livro
-
-- **URL**: `http://127.0.0.1:5000/livro/<id>`
-- **Método**: `GET`
-- **URL Params**: Substitua `<id>` pelo ID do livro para obter seus detalhes completos.
-
-Esta requisição retorna os detalhes de um livro específico, incluindo título e autor.
-
-### Atualizar um Livro
-
-- **URL**: `http://127.0.0.1:5000/livro/<id>`
-- **Método**: `PUT`
-- **URL Params**: Substitua `<id>` pelo ID do livro que deseja atualizar.
-- **Body** (raw, JSON):
-  ```json
-  {
-    "titulo": "Novo Nome do Livro",
-    "autor": "Novo Autor do Livro"
-  }
-
-### Atualizar um Livro
-
-Esta operação permite a atualização dos detalhes de um livro específico no banco de dados. Certifique-se de fornecer as informações atualizadas no corpo da requisição.
-
-### Deletar um Livro
-
-- **URL**: `http://127.0.0.1:5000/livro/<id>`
-- **Método**: `DELETE`
-- **URL Params**: Substitua `<id>` pelo ID do livro que deseja deletar.
-
-Esta operação remove um livro do banco de dados de forma permanente. **Atenção**: Esta ação é irreversível.
-
-## Conclusão
-
-Este guia oferece uma visão detalhada de como configurar, inicializar e testar o Projeto Biblioteca utilizando a combinação de Flask e SQLite. Ele visa facilitar o entendimento e a execução das operações CRUD, essenciais para a gestão da biblioteca virtual.
-
-Para maiores informações e suporte técnico, é recomendável consultar a documentação oficial do [Flask](https://flask.palletsprojects.com/) e do [SQLite](https://www.sqlite.org/docs.html). Estes recursos oferecem um vasto material sobre configurações avançadas, otimizações e melhores práticas para desenvolvimento de aplicações robustas e eficientes.
+Este projeto é licenciado sob a Licença MIT - veja o arquivo LICENSE.md para detalhes.
