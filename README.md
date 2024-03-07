@@ -1,68 +1,91 @@
-## Gerenciamento de Biblioteca com Flask
+# Gerenciamento de Biblioteca com Flask
 
-Este projeto é uma aplicação Flask que fornece uma API RESTful para o gerenciamento de uma coleção de livros em uma biblioteca. Utilizando Flask e SQLAlchemy com SQLite como banco de dados, permite aos usuários adicionar, listar, atualizar e deletar livros através de endpoints HTTP.
+Este projeto é uma aplicação web Flask que permite o gerenciamento de uma coleção de livros. Os usuários podem adicionar, consultar, editar e deletar livros da biblioteca. A aplicação usa SQLite como banco de dados e inclui uma interface de usuário com templates HTML para interação fácil.
 
-### Funcionalidades
+## Estrutura do Projeto
 
-* CRUD de Livros: Crie, leia, atualize e delete livros usando a API REST.
-* Armazenamento com SQLite: Facilita o armazenamento e recuperação de dados de livros.
-* Feedback ao Usuário: Fornece respostas claras e informativas para as ações do usuário.
+O projeto inclui os seguintes arquivos e diretórios principais:
 
-### Tecnologias Utilizadas
+- `app.py`: O arquivo principal da aplicação Flask que define rotas e lógica.
+- `templates/`: Diretório que contém os templates HTML para as páginas da aplicação.
+  - `adicionar.html`: Template para adicionar novos livros.
+  - `consultar.html`: Template para visualizar a lista de livros.
+  - `editar.html`: Template para editar os detalhes de um livro existente.
+  - `index.html`: Template que serve como a página inicial e lista todos os livros.
+- `instance/`: Diretório que contém o banco de dados SQLite da aplicação.
+- `venv/`: Diretório do ambiente virtual Python para o projeto.
+- `requirements.txt`: Lista todas as dependências necessárias para o projeto.
+- `Pipfile` e `Pipfile.lock`: Arquivos usados pelo Pipenv para gerenciar dependências.
 
-* Flask
-* Flask-SQLAlchemy
-* SQLite
+## Funcionalidades
 
-### Como Configurar
+- **CRUD de Livros**: Crie, leia, atualize e delete informações de livros.
+- **Interface Amigável**: Utilize templates HTML para interagir com a aplicação.
+- **Armazenamento com SQLite**: Use SQLite para armazenar dados de livros de forma persistente.
 
-#### Pré-Requisitos
+## Tecnologias Utilizadas
 
-* Python 3.6 ou superior
-* pip
+- Flask
+- Flask-SQLAlchemy
+- Flask-Migrate
+- HTML
+- SQLite
 
-#### Instalação
+## Configuração e Execução
 
-1. Clone o repositório para sua máquina local:
+### Pré-Requisitos
 
-```bash
-git clone <URL do repositório>
-```
+- Python 3.6 ou superior
+- Pipenv para a gestão de dependências
+
+### Instalação
+
+1. Clone o repositório:
+
+    ```bash
+    git clone <URL do repositório>
+    ```
 
 2. Navegue até o diretório do projeto:
 
-```bash
-cd <nome do diretório do projeto>
-```
+    ```bash
+    cd ProjetoBiblioteca
+    ```
 
-3. Instale as dependências necessárias:
+3. Instale as dependências usando Pipenv:
 
-```
-pip install flask flask_sqlalchemy
-```
+    ```bash
+    pipenv install
+    ```
 
 ### Como Executar
 
-1. Inicie o servidor Flask executando:
+1. Ative o ambiente virtual:
 
-```
-python app.py
-```
+    ```bash
+    pipenv shell
+    ```
 
-2. A aplicação agora estará rodando em http://localhost:5000/. Você pode acessar os endpoints definidos utilizando um cliente HTTP como Postman ou via curl.
+2. Inicie o aplicativo Flask:
 
-### Endpoints da API
+    ```bash
+    flask run
+    ```
 
-* **POST /livro:** Adiciona um novo livro. Exemplo de corpo da requisição: {"titulo": "Novo Livro", "autor": "Autor"}.
-* **GET /livros:** Retorna uma lista de todos os livros.
-* **GET /livro/<id>:** Retorna detalhes de um livro específico.
-* **PUT /livro/<id>:** Atualiza um livro existente. Exemplo de corpo da requisição: {"titulo": "Livro Atualizado", "autor": "Autor Atualizado"}.
-* **DELETE /livro/<id>:** Deleta um livro específico.
+3. Acesse a aplicação em `http://localhost:5000/`.
 
-### Contribuindo
+## API Endpoints
 
-Contribuições são muito bem-vindas! Por favor, leia o CONTRIBUTING.md para mais detalhes sobre nosso código de conduta, e o processo para enviar pedidos de pull.
+- **POST /adicionar**: Adiciona um novo livro.
+- **GET /consultar**: Lista todos os livros.
+- **GET /editar/<id>**: Mostra o formulário de edição para um livro.
+- **POST /editar/<id>**: Submete as alterações de um livro.
+- **GET /deletar/<id>**: Deleta um livro.
 
-### Licença
+## Contribuição
 
-Este projeto é licenciado sob a Licença MIT - veja o arquivo LICENSE.md para detalhes.
+Contribuições são bem-vindas! Consulte `CONTRIBUTING.md` para obter diretrizes sobre como contribuir para o projeto.
+
+## Licença
+
+Este projeto é distribuído sob a Licença MIT, conforme detalhado no arquivo `LICENSE.md`.
